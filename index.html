@@ -49,7 +49,10 @@
     .result-copy ul { padding-left: 23px; }
     .result-copy li + li { margin-top: 4px; }
     .result-note, .fine { color: var(--muted); font-size: .82rem; }
-    .result-actions { margin-top: 25px; }
+    .result-invite { max-width: 68ch; margin-top: 28px; padding: clamp(16px, 4vw, 24px); border: 1px solid var(--line); border-radius: 16px; background: var(--paper); }
+    .result-invite h3 { margin: 0; font-size: 1.17rem; }
+    .result-invite p { margin: 10px 0 0; }
+    .result-invite .button { display: inline-flex; align-items: center; margin-top: 16px; text-decoration: none; }
     .fine { margin: 14px 3px 0; }
     @media (max-width: 390px) { .shell { width: calc(100% - 20px); } .button { padding-inline: 13px; } }
   </style>
@@ -96,7 +99,12 @@
       <p class="range" id="range"></p>
       <p class="result-note">Авторская интерпретация для размышления о вашем опыте.</p>
       <div class="result-copy" id="result-copy"></div>
-      <div class="result-actions"><button class="button secondary" id="restart" type="button">Пройти заново</button></div>
+      <section class="result-invite" aria-labelledby="invite-title">
+        <h3 id="invite-title">Хотите разобрать свой результат на живом примере?</h3>
+        <p>На эфире «Папа, деньги» поговорим о том, как опыт отношений с отцом может проявляться в денежных ситуациях. Например, когда трудно назвать свою цену, попросить больше или отказаться от невыгодного предложения.</p>
+        <p>Присоединяйтесь к каналу в Telegram. Там мы объявим дату и время эфира. На эфир можно прийти со своим вопросом.</p>
+        <a class="button" href="https://t.me/+8jhZB09uZ0BhOThi" target="_blank" rel="noopener noreferrer">Перейти в канал эфира</a>
+      </section>
     </section>
   </main>
   <p class="fine">Ответы и результат остаются в этом окне.</p>
@@ -290,11 +298,6 @@
     }
     step -= 1;
     renderQuestion();
-  });
-  get('restart').addEventListener('click', () => {
-    answers.fill(null);
-    step = 0;
-    show('intro', 'intro-title');
   });
 </script>
 </body>
